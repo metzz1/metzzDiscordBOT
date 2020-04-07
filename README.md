@@ -1,2 +1,3 @@
-Simple bot to display Corona Virus info on discord
-usage: !corona
+BOT for my discord server
+!cotacao
+!corona
