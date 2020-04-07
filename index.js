@@ -1,9 +1,11 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const axios = require('axios')
+const emoji = require('node-emoji')
+
 require('dotenv').config()
 client.on('ready', () => {
-  console.log(`Logado como: ${client.user.tag}`);
+  console.log(`${emoji.emojify('Made w/ :heart:')}\nLogado como: ${client.user.tag}`);
 });
 
 client.on('message', async msg => {
@@ -11,7 +13,7 @@ client.on('message', async msg => {
     const pais = msg.content.split(' ')[1]
     if (pais === 'ajuda' || typeof pais === 'undefined') {
       let embed = new Discord.MessageEmbed()
-      embed.setTitle("Comandos:")
+      embed.setTitle(`${emoji.emojify(':sos:')} Ajuda ${emoji.emojify(':sos:')}`)
       embed.setDescription("\n!corona (nome do pais em ingles) - Informacoes de um pais\n!corona world - Informacoes do mundo inteiro")
       msg.channel.send(embed)
     } 
@@ -20,15 +22,14 @@ client.on('message', async msg => {
         console.log(pais)
       let getData = async () => {
         let response = await axios.get(`https://coronavirus-19-api.herokuapp.com/countries/${pais}`)
-        .then(resp => {
-          return resp
+        .then(response => {
+          return response
         })
         .catch(error=> {
           console.log(error)
           return error
         })
-        let world = response.data
-        return world
+        return response.data
       }
       await getData ()
         .then(response=> {
