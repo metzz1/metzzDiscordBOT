@@ -35,12 +35,15 @@ client.on('message', async msg => {
         .then(response=> {
           console.log(response)
           if (response.cases === undefined) {
-            msg.channel.send("Erro, pais inexistente ou indisponivel")
+            let embed = new Discord.MessageEmbed()
+            embed.setTitle(`${emoji.emojify(':red_circle:')} Erro!`)
+            embed.setDescription("Pais inexistente ou indisponivel")
+            msg.channel.send(embed)
           }
           else {
          console.log(`Data from ${pais.toUpperCase()} obtained`)
           let embed = new Discord.MessageEmbed()
-          embed.setTitle(`${pais.toUpperCase()}`)
+          embed.setTitle(`${emoji.emojify(':large_blue_circle:')} ${pais.toUpperCase()}`)
           embed.setDescription(`\n\nCasos:${response.cases}\nCasos Hoje:${response.todayCases}\nMortes:${response.deaths}\nMortes Hoje: ${response.todayDeaths}`)
           msg.channel.send(embed)
           }
