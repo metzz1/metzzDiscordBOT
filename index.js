@@ -11,7 +11,8 @@ client.on('message', async msg => {
     const pais = msg.content.split(' ')[1]
     if (pais === 'ajuda' || typeof pais === 'undefined') {
       let embed = new Discord.MessageEmbed()
-      embed.setDescription("Comandos:\n!corona (nome do pais em ingles) - Informacoes de um pais\n!corona world - Informacoes do mundo inteiro")
+      embed.setTitle("Comandos:")
+      embed.setDescription("\n!corona (nome do pais em ingles) - Informacoes de um pais\n!corona world - Informacoes do mundo inteiro")
       msg.channel.send(embed)
     } 
 
@@ -38,7 +39,8 @@ client.on('message', async msg => {
           else {
          console.log(`Data from ${pais.toUpperCase()} obtained`)
           let embed = new Discord.MessageEmbed()
-          embed.setDescription(`${pais.toUpperCase()}\n\nCasos:${response.cases}\nCasos Hoje:${response.todayCases}\nMortes:${response.deaths}\nMortes Hoje: ${response.todayDeaths}`)
+          embed.setTitle(`${pais.toUpperCase()}`)
+          embed.setDescription(`\n\nCasos:${response.cases}\nCasos Hoje:${response.todayCases}\nMortes:${response.deaths}\nMortes Hoje: ${response.todayDeaths}`)
           msg.channel.send(embed)
           }
         })
