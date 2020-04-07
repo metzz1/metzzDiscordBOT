@@ -113,7 +113,7 @@ client.on('message', async msg => {
          console.log(`Erro moeda inexistente`)
           let embed = new Discord.MessageEmbed()
           embed.setTitle(`${emoji.emojify(':red_circle:')} ERRO!`)
-          embed.setDescription(`A moeda: ${moeda} nao esta disponivel`)
+          embed.setDescription(`A moeda: ${moeda} nao esta disponivel.\nPara checar as moedas disponiveis digite: !cotacao`)
           msg.channel.send(embed)
           }
         })
