@@ -45,7 +45,7 @@ client.on('message', async msg => {
          console.log(`Data from ${pais.toUpperCase()} obtained`)
           let embed = new Discord.MessageEmbed()
           embed.setTitle(`${emoji.emojify(':large_blue_circle:')} ${pais.toUpperCase()}`)
-          embed.setDescription(`\n\nCasos:${response.cases}\nCasos Hoje:${response.todayCases}\nMortes:${response.deaths}\nMortes Hoje: ${response.todayDeaths}`)
+          embed.setDescription(`\n\nCasos: ${response.cases.toLocaleString('de-DE')}\nCasos Hoje: ${response.todayCases.toLocaleString('de-DE')}\nMortes: ${response.deaths.toLocaleString('de-DE')}\nMortes Hoje: ${response.todayDeaths.toLocaleString('de-DE')}`)
           msg.channel.send(embed)
           }
         })
