@@ -20,9 +20,9 @@ const fetchData = async url => {
   }
 }
 
-const currencyEmbed = (title, currency) => {
+const currencyEmbed = (title, currency, values) => {
   const dTitle = `${emoji.emojify(':currency_exchange:')} ${title} (${currency})!`
-  const dDescription = `Cotacao do ${title}: R$${response.results.currencies[currency].buy}`
+  const dDescription = `Cotacao do ${title}: R$${values.buy}`
   return discordMessage(dTitle, dDescription)
 }
 
@@ -70,19 +70,19 @@ client.on('message', async msg => {
     const { USD, GBP, ARS, EUR, BTC } = values
     switch (moeda.toLocaleLowerCase()) {
       case 'dolar':
-        msg.channel.send(currencyEmbed('Dolar', 'USD'))
+        msg.channel.send(currencyEmbed('Dolar', 'USD', USD))
         break
       case 'libra':
-        msg.channel.send(currencyEmbed('Libra', 'GBP'))
+        msg.channel.send(currencyEmbed('Libra', 'GBP', GBP))
         break
       case 'peso':
-        msg.channel.send(currencyEmbed('Peso Argentino', 'ARS'))
+        msg.channel.send(currencyEmbed('Peso Argentino', 'ARS', ARS))
         break
       case 'euro':
-        msg.channel.send(currencyEmbed('Euro', 'EUR'))
+        msg.channel.send(currencyEmbed('Euro', 'EUR', EUR))
         break
       case 'bitcoin':
-        msg.channel.send(currencyEmbed('Bitcoin', 'BTC'))
+        msg.channel.send(currencyEmbed('Bitcoin', 'BTC', BTC))
         break
       default:
         msg.channel.send(
